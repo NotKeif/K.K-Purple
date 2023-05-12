@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 154229579}
   - component: {fileID: 154229578}
   - component: {fileID: 154229577}
+  - component: {fileID: 154229580}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -234,6 +235,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &154229580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154229576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d214e34c515ce42a44b82cfa2ed746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +258,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -318,6 +332,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &519420033
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -9.703916, y: -4.967193}
+  - {x: 9.784977, y: -5.0290284}
+  - {x: 9.725947, y: 4.9962997}
+  - {x: -9.667819, y: 5.021022}
+  - {x: -9.726573, y: -4.8795366}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &785258646
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +494,6 @@ GameObject:
   - component: {fileID: 1839680596}
   - component: {fileID: 1839680595}
   - component: {fileID: 1839680594}
-  - component: {fileID: 1839680593}
   - component: {fileID: 1839680592}
   m_Layer: 0
   m_Name: Circle
@@ -478,31 +516,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 785258649}
   player2: {fileID: 154229579}
---- !u!68 &1839680593
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1839680591}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 9.686833, y: -5.0711746}
-  - {x: 9.652705, y: 4.9780946}
-  - {x: -9.813966, y: 4.9634204}
-  - {x: -9.91876, y: -4.9986176}
-  - {x: 9.53025, y: -5.0266905}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!50 &1839680594
 Rigidbody2D:
   serializedVersion: 4
