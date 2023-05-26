@@ -26,14 +26,25 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(direction * Time.deltaTime * speed);
 
-        if (transform.position.x > 8f)
+        if (transform.position.x > 20f)
         {
             direction = Vector2.left;
+            MoveDown();
         }
 
-        if (transform.position.x < -8f)
+        if (transform.position.x < -20f)
         {
             direction = Vector2.right;
+            MoveDown();
         }
+    }
+
+    private void MoveDown()
+    {
+        foreach (Enemy enemy in FindObjectsOfType(typeof(Enemy)))
+        {
+            enemy.transform.Translate(Vector2.down);
+        }
+        
     }
 }
