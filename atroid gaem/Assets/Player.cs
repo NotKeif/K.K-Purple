@@ -18,13 +18,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Input.GetKey(KeyCode.LeftArrow))
+       if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Rotate(Vector3.forward * Time.deltaTime * lookSpeed);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Rotate(Vector3.back * Time.deltaTime * lookSpeed);
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            Vector3 velocity = rb.velocity;
+            velocity = velocity + transform.right * Time.deltaTime * moveSpeed;
+            Vector3.ClampMagnitude(velocity, maxSpeed);
+            rb.velocity = velocity;
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Instantiate(bulletPrefab, transform.position, transform.rotation);
         }
     }
 }
