@@ -5,12 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject rockPrefab;
+    public Transform[] spawnPoints;
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < 4; i++)
+        InvokeRepeating("SpawnRocks", 1 f, 10f);
+    }
+    private void SpawnRocks()
+    {
+        for (int i = 0; i < 4; i++)
         {
-            Vector3 randomPosition = new Vector3(Random.Range(-8, 8), Random.Range(-8, 8), 0f);
+            Vector3 randomPosition = spawnPoints[Random.Range(0, 3)].position;
             Instantiate(rockPrefab, randomPosition, Quaternion.identity);
         }
     }
