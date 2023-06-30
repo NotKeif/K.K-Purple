@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 5707018085138579211}
   - component: {fileID: 4138295650231319674}
   - component: {fileID: 848427052617880572}
+  - component: {fileID: 5116028616355155136}
   m_Layer: 7
   m_Name: Ghost_Pinky
   m_TagString: Ghost
@@ -400,6 +401,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5116028616355155136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7217069952925302457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ec30ea419a56b45851c8749e121a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  initialDirection: {x: 0, y: -1}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  body: {fileID: 673111938717717953}
+  eyes: {fileID: 7876897431564741871}
+  blue: {fileID: 1972477744355828061}
+  white: {fileID: 1995415571924803455}
+  atHome: 0
+  homeDuration: 16
 --- !u!1 &7876897431564741871
 GameObject:
   m_ObjectHideFlags: 0
