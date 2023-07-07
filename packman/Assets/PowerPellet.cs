@@ -10,7 +10,7 @@ public class PowerPellet : Pellet
         GameObject[] ghosts = GameObject.FindGameObjectsWithTag("Ghost");
         foreach(GameObject ghost in ghosts)
         {
-
+            ghost.GetComponent<Ghost>().Frighten();
         }
     }
 }
