@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3010043751923710336}
   - component: {fileID: 6353044531531433834}
   - component: {fileID: 8610610517436332083}
+  - component: {fileID: 4452269637733088901}
   m_Layer: 8
   m_Name: Goomba_Walk1
   m_TagString: Untagged
@@ -123,3 +124,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &4452269637733088901
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4075837947901515334}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e211a3a29d0cd624a8d7b48019cdec50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
