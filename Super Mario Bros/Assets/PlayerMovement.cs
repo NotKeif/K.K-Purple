@@ -34,8 +34,6 @@ public class PlayerMovement : MonoBehaviour
             Vector3 velocity = rb.velocity;
             velocity.y = jumpForce;
             rb.velocity = velocity;
-            jumping = true;
-            Invoke("ResetJumping", 0.5f);
             
         }
         if (jumping && Input.GetKey(KeyCode.Space))
@@ -44,10 +42,6 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = jumpForce;
             rb.velocity = velocity;
         }
-    }
-    private void ResetJumping()
-    {
-        jumping = false;
     }
     private void FlipDirection()
     {
