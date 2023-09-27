@@ -59,4 +59,29 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("inAir", hit.collider == null || jumping);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        float distance = 0.375f;
+
+        if (GetComponent<PlayerBehaviour>().big)
+        {
+            distance += 1f;
+            RaycastHit2D hitTop = Physics2D.CircleCast(rb.position, 0.25f, Vector2.up, distance, LayerMask.GetMask("Default"));
+            
+            if(hitTop.collider != null)
+            {
+                Vector3 velocity = rb.velocity;
+                velocity.y = 0;
+                rb.velocity = velocity;
+                jumping = false;
+
+                BlockHit blockHit = hitTop.collider.gameObject.GetComponent<BlockHit>();
+                if(blockHit != null)
+                {
+                    blockHit.Hit();
+                }
+            }
+        }
+    }
 }
