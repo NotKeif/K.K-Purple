@@ -14,7 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         smallAnimator = smallRenderer.gameObject.GetComponent<Animator>();
         big = false;
-        StartCoroutine("ChangeSize");
+        //StartCoroutine("ChangeSize");
     }
   
     
