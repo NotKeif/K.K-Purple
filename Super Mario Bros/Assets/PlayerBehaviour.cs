@@ -11,7 +11,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     // Start is called before the first frame update
     private void Start()
-    {
+    { 
         smallAnimator = smallRenderer.gameObject.GetComponent<Animator>();
         big = false;
         //StartCoroutine("ChangeSize");
