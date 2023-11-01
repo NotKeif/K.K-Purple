@@ -12,8 +12,19 @@ public class Tetromino : MonoBehaviour
     public float fallTime = 0.8f;
     //public float tempTime = fallTime;
     // Update is called once per frame
+    public static Transform[,] grid = new Transform[width, height];
+    public void AddToGrid()
+    {
+        foreach (Transform child in transform)
+        {
+            int x = Mathf.RoundToInt(child.transform.position.x);
+            int y = Mathf.RoundToInt(child.transform.position.y);
+            grid[x, y] = child;
+        }
+    }
     void Update()
     {
+       
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Vector3 convertedPoint = transform.TransformPoint(rotationPoint);
@@ -48,6 +59,11 @@ public class Tetromino : MonoBehaviour
             if (!validMove())
             {
                 transform.position += Vector3.up * Time.deltaTime;
+                AddToGrid();
+                this.enabled = false;
+                FindObjectOfType<Spawner>().SpawnTetromino();
+                CheckForLines();
+
             }
 
         }
@@ -69,16 +85,21 @@ public class Tetromino : MonoBehaviour
         {
             int x = Mathf.RoundToInt(child.transform.position.x);
             int y = Mathf.RoundToInt(child.transform.position.y);
-            if (transform.position.x < 0.934 || transform.position.x >= 8.1)
+            if (transform.position.x < -0.5 || transform.position.x >= 9.5)
             {
                 return false;
             }
-            if (transform.position.y < -0.056 || transform.position.y >= 18.047)
+            if (transform.position.y < 0.2 || transform.position.y >= 19.5)
+            {
+                return false;
+            }
+            if (grid[x, y] != null)
             {
                 return false;
             }
         }
         return true;
+        
 
     }
     public bool validRotation()
@@ -87,7 +108,7 @@ public class Tetromino : MonoBehaviour
         {
             int x = Mathf.RoundToInt(child.transform.position.x);
             int y = Mathf.RoundToInt(child.transform.position.y);
-            if (transform.position.x < 0.952 || transform.position.x >= 8.105 && transform.position.y == -0.06)
+            if (transform.position.x < -0.5 || transform.position.x >= 9.5 && transform.position.y == -0.5)
             {
                 return false;
             }
@@ -98,5 +119,57 @@ public class Tetromino : MonoBehaviour
 
         }
         return true;
+    }
+    public void CheckForLines()
+    {
+        for (int i = height; i >=0; i++)
+        {
+            Debug.Log("called");
+            if (HasLine(i))
+            {
+                DeleteLine(i);
+                RowDown(i);
+            }
+        }
+    }
+    public bool HasLine(int i)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            if (grid[j, i] == null)
+            {
+                Debug.Log("false");
+                return false;
+                
+            }
+            
+        }
+        Debug.Log("true");
+        return true;
+        
+    }
+    public void DeleteLine(int i)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            Destroy(grid[j, i].gameObject);
+            grid[j, i] = null;
+        }
+    }
+
+    public void RowDown(int i)
+    {
+        for (int y = i; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                if (grid[x,y]!= null)
+                {
+                    grid[x, y - 1] = grid[x, y];
+                    grid[x, y] = null;
+                    grid[x, y - 1].transform.position += Vector3.down;
+                }
+            }
+        }
     }
 }
