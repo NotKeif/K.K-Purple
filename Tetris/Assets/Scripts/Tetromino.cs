@@ -29,7 +29,7 @@ public class Tetromino : MonoBehaviour
         {
             Vector3 convertedPoint = transform.TransformPoint(rotationPoint);
             transform.RotateAround(convertedPoint, Vector3.forward, 90);
-            if (!validRotation())
+            if (!validMove())
             {
                 transform.RotateAround(convertedPoint, Vector3.forward, -90);
             }
@@ -85,11 +85,11 @@ public class Tetromino : MonoBehaviour
         {
             int x = Mathf.RoundToInt(child.transform.position.x);
             int y = Mathf.RoundToInt(child.transform.position.y);
-            if (transform.position.x < -0.5 || transform.position.x >= 9.5)
+            if (x < 0 || x >= width)
             {
                 return false;
             }
-            if (transform.position.y < 0.2 || transform.position.y >= 19.5)
+            if (y < -0.5 || y >= height)
             {
                 return false;
             }
@@ -102,27 +102,27 @@ public class Tetromino : MonoBehaviour
         
 
     }
-    public bool validRotation()
-    {
-        foreach (Transform child in transform)
-        {
-            int x = Mathf.RoundToInt(child.transform.position.x);
-            int y = Mathf.RoundToInt(child.transform.position.y);
-            if (transform.position.x < -0.5 || transform.position.x >= 9.5 && transform.position.y == -0.5)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+    //public bool validRotation()
+    //{
+    //    foreach (Transform child in transform)
+    //    {
+    //        int x = Mathf.RoundToInt(child.transform.position.x);
+    //        int y = Mathf.RoundToInt(child.transform.position.y);
+    //        if (transform.position.x < -0.5 || transform.position.x >= 9.5 && transform.position.y == -0.5)
+    //        {
+    //            return false;
+    //        }
+    //        else
+    //        {
+    //            return true;
+    //        }
 
-        }
-        return true;
-    }
+    //    }
+    //    return true;
+    //}
     public void CheckForLines()
     {
-        for (int i = height; i >=0; i++)
+        for (int i = height - 1; i >=0; i--)
         {
             Debug.Log("called");
             if (HasLine(i))
@@ -150,6 +150,7 @@ public class Tetromino : MonoBehaviour
     }
     public void DeleteLine(int i)
     {
+        Debug.Log("delete");
         for (int j = 0; j < width; j++)
         {
             Destroy(grid[j, i].gameObject);
